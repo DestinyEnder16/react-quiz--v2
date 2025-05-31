@@ -9,8 +9,9 @@ function Form({ dispatch }) {
   const [difficulty, setDifficulty] = useState('easy');
 
   return (
-    <form onSubmit={(e) => e.preventDefault()}>
+    <form>
       <div className="field">
+        <label>Number of Questions</label>
         <input
           type="number"
           min={1}
@@ -25,11 +26,20 @@ function Form({ dispatch }) {
         <label>Categories</label>
         <select value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value={'science'}>Science</option>
-          <option value={'mathematics'}>Mathematics</option>
+          <option value={'history'}>History</option>
+          <option value={'music'}>Music</option>
+          <option value={'geography'}>Geography</option>
+          <option value={'sport_and_leisure'}>Sport and leisure</option>
+          <option value={'general_knowledge'}>General Knowledge</option>
         </select>
       </div>
       <div className="field">
-        <select value={difficulty} onChange={(e) => e.target.value}>
+        <label htmlFor="difficulty">Difficulty:</label>
+        <select
+          value={difficulty}
+          onChange={(e) => e.target.value}
+          id="difficulty"
+        >
           <option value="easy">Easy</option>
           <option value="medium">medium</option>
           <option value="hard">hard</option>

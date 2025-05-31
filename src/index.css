@@ -171,6 +171,31 @@ progress::-webkit-progress-value {
   gap: 2rem;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+form label {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+form input,
+form select {
+  font-family: inherit;
+  padding: 0.5rem;
+  font-weight: 500;
+}
+
+.field {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
 footer {
   position: fixed;
   bottom: 0;
