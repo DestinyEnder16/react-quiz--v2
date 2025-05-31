@@ -1,6 +1,9 @@
 function Footer() {
   return (
-    <footer>&copy; {new Date().getFullYear()} Project of Destiny Israel</footer>
+    <footer>
+      &copy; {new Date().getFullYear()} Project of{' '}
+      <strong>Destiny Israel</strong>
+    </footer>
   );
 }
 
