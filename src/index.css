@@ -129,6 +129,32 @@ header h1 {
   cursor: progress;
 }
 
+.progress-bar {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.points {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+progress {
+  appearance: none;
+  width: 300px;
+}
+
+progress::-webkit-progress-bar {
+  border-radius: 1rem;
+  background: #fdbe87;
+}
+
+progress::-webkit-progress-value {
+  background-color: #2f4f4f; /* soft sunlike orange */
+  border-radius: 10px;
+}
+
 footer {
   position: fixed;
   bottom: 0;

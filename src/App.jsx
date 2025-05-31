@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import Loader from './components/Loader';
 import Question from './components/Question';
 import Navigation from './components/Navigation';
+import ProgressBar from './components/ProgressBar';
 
 function App() {
   function reducer(state, action) {
@@ -52,10 +53,8 @@ function App() {
     pointsPerQuestion: 5,
   };
 
-  const [{ status, questions, curQuestion, userAnswer }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
+  const [{ status, questions, curQuestion, userAnswer, points }, dispatch] =
+    useReducer(reducer, initialState);
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -87,6 +86,7 @@ function App() {
     <>
       <Header />
       <main>
+        <ProgressBar questions={questions} curQuestion={curQuestion} />
         {status === 'load' && <Start dispatch={dispatch} />}
         {status === 'start' && isLoading && <Loader />}
         {status === 'dataReceived' && (
