@@ -86,12 +86,12 @@ function App() {
     <>
       <Header />
       <main>
-        <ProgressBar questions={questions} curQuestion={curQuestion} />
         {status === 'load' && <Start dispatch={dispatch} />}
         {status === 'start' && isLoading && <Loader />}
         {status === 'dataReceived' && (
           <>
             <Quiz>
+              <ProgressBar questions={questions} curQuestion={curQuestion} />
               <Question
                 question={questions[curQuestion]}
                 dispatch={dispatch}
