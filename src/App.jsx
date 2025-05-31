@@ -8,6 +8,7 @@ import Question from './components/Question';
 import Navigation from './components/Navigation';
 import ProgressBar from './components/ProgressBar';
 import FinishScreen from './components/FinishScreen';
+import Form from './components/Form';
 
 function App() {
   function reducer(state, action) {
@@ -19,8 +20,16 @@ function App() {
           questions: action.payload,
           curQuestion: 0,
         };
+      case 'init':
+        return { ...state, status: 'init' };
       case 'start':
-        return { ...state, status: 'start' };
+        return {
+          ...state,
+          status: 'start',
+          limit: action.payload.limit,
+          category: action.payload.category,
+          difficulty: action.payload.difficulty,
+        };
       case 'next':
         if (state.curQuestion === state.questions.length - 1)
           return { ...state, status: 'end' };
@@ -60,27 +69,43 @@ function App() {
     userAnswer: null,
     points: 0,
     pointsPerQuestion: 5,
+    limit: 0,
+    category: '',
+    difficulty: '',
   };
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const [
-    { status, questions, curQuestion, userAnswer, points, pointsPerQuestion },
+    {
+      status,
+      questions,
+      curQuestion,
+      userAnswer,
+      points,
+      pointsPerQuestion,
+      limit,
+      category,
+      difficulty,
+    },
     dispatch,
   ] = useReducer(reducer, initialState);
-
-  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(
     function () {
       async function getQuestions() {
         try {
           setIsLoading(true);
+          if (limit === 0) {
+            throw new Error('No data found');
+          }
+
           const response = await fetch(
-            `https://the-trivia-api.com/api/questions?limit=${3}&categories=${'science'}&difficulties=${'hard'}`
+            `https://the-trivia-api.com/api/questions?limit=${limit}&categories=${category}&difficulties=${difficulty}`
           );
           const data = await response.json();
           dispatch({ type: 'dataReceived', payload: data });
-          console.log(data);
-        } catch {
+        } catch (err) {
           console.warn(err.message);
         } finally {
           setIsLoading(false);
@@ -98,6 +123,7 @@ function App() {
       <Header />
       <main>
         {status === 'load' && <Start dispatch={dispatch} />}
+        {status === 'init' && <Form dispatch={dispatch} />}
         {status === 'start' && isLoading && <Loader />}
         {status === 'dataReceived' && (
           <>

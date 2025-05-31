@@ -5,7 +5,6 @@ function Navigation({ dispatch, text, isAble }) {
         <button
           className="btn btn-nav"
           onClick={() => dispatch({ type: 'next' })}
-          // {isAble ? disabled : ''}
           disabled={isAble}
         >
           {text}

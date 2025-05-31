@@ -5,7 +5,7 @@ function Start({ dispatch }) {
         Test your knowledge in different fields by answering some questions!
       </p>
 
-      <button className="btn" onClick={() => dispatch({ type: 'start' })}>
+      <button className="btn" onClick={() => dispatch({ type: 'init' })}>
         Start the Quiz!
       </button>
     </aside>
