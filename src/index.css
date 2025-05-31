@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+/* resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  background: none;
+  cursor: pointer;
+}
+
+/* styles */
+body {
+  background-color: antiquewhite;
+  font-family: 'Quicksand', sans-serif;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+header {
+  margin-bottom: 3rem;
+}
+
+header h1 {
+  font-size: 6rem;
+  text-align: center;
+}
+
+.intro,
+/* .question, */
+.loader,
+.quiz {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.quiz {
+  gap: 5rem;
+}
+
+.intro p {
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+/* .question {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5rem;
+} */
+
+.question h3 {
+  font-size: 1.7rem;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.btn {
+  font-family: inherit;
+  padding: 1rem;
+  transition: all 0.3s;
+  border: 1px solid;
+  border-radius: 1rem;
+  font-weight: 500;
+}
+
+.btn-nav:enabled:hover {
+  background-color: #fdbe87;
+}
+
+.btn-option.correct {
+  background: #2f4f4f;
+  color: antiquewhite;
+}
+
+/* .btn-option:disabled {
+  background: ;
+} */
+
+.btn-option.wrong {
+  background: indianred;
+  color: antiquewhite;
+}
+
+.btn-option:enabled:hover {
+  background: #2f4f4f;
+  color: antiquewhite;
+}
+
+.btn:disabled:hover {
+  /* background: initial; */
+  cursor: progress;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  padding: 3rem;
+  background: ivory;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+/* loader */
+.shapes-5 {
+  width: 40px;
+  height: 40px;
+  color: #ffa500;
+  background: linear-gradient(currentColor 0 0),
+    linear-gradient(currentColor 0 0), linear-gradient(currentColor 0 0),
+    linear-gradient(currentColor 0 0);
+  background-size: 21px 21px;
+  background-repeat: no-repeat;
+  animation: sh5 1.5s infinite cubic-bezier(0.3, 1, 0, 1);
+}
+@keyframes sh5 {
+  0% {
+    background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+  }
+  33% {
+    background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+    width: 60px;
+    height: 60px;
+  }
+  66% {
+    background-position: 100% 0, 100% 100%, 0 100%, 0 0;
+    width: 60px;
+    height: 60px;
+  }
+  100% {
+    background-position: 100% 0, 100% 100%, 0 100%, 0 0;
+  }
+}
