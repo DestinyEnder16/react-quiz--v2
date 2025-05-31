@@ -29,7 +29,14 @@ function App() {
           userAnswer: null,
         };
       case 'submitAnswer':
-        return { ...state, userAnswer: action.payload };
+        return {
+          ...state,
+          userAnswer: action.payload,
+          points:
+            action.option === 'correct'
+              ? state.pointsPerQuestion + state.points
+              : state.points,
+        };
 
       default:
         return state;
@@ -41,12 +48,15 @@ function App() {
     questions: [],
     curQuestion: null,
     userAnswer: null,
+    points: 0,
+    pointsPerQuestion: 5,
   };
 
   const [{ status, questions, curQuestion, userAnswer }, dispatch] = useReducer(
     reducer,
     initialState
   );
+
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(
