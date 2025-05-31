@@ -155,6 +155,17 @@ progress::-webkit-progress-value {
   border-radius: 10px;
 }
 
+.results {
+  font-size: 1.5rem;
+}
+
+.finish {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
 footer {
   position: fixed;
   bottom: 0;

@@ -7,6 +7,7 @@ import Loader from './components/Loader';
 import Question from './components/Question';
 import Navigation from './components/Navigation';
 import ProgressBar from './components/ProgressBar';
+import FinishScreen from './components/FinishScreen';
 
 function App() {
   function reducer(state, action) {
@@ -38,6 +39,14 @@ function App() {
               ? state.pointsPerQuestion + state.points
               : state.points,
         };
+      case 'reset':
+        return {
+          ...state,
+          status: 'load',
+          curQuestion: null,
+          userAnswer: null,
+          points: 0,
+        };
 
       default:
         return state;
@@ -53,8 +62,10 @@ function App() {
     pointsPerQuestion: 5,
   };
 
-  const [{ status, questions, curQuestion, userAnswer, points }, dispatch] =
-    useReducer(reducer, initialState);
+  const [
+    { status, questions, curQuestion, userAnswer, points, pointsPerQuestion },
+    dispatch,
+  ] = useReducer(reducer, initialState);
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -64,7 +75,7 @@ function App() {
         try {
           setIsLoading(true);
           const response = await fetch(
-            `https://the-trivia-api.com/api/questions?limit=${5}&categories=${'science'}&difficulties=${'hard'}`
+            `https://the-trivia-api.com/api/questions?limit=${3}&categories=${'science'}&difficulties=${'hard'}`
           );
           const data = await response.json();
           dispatch({ type: 'dataReceived', payload: data });
@@ -105,7 +116,13 @@ function App() {
             </Quiz>
           </>
         )}
-        {status === 'end' && <p>End of Quiz</p>}
+        {status === 'end' && (
+          <FinishScreen
+            points={points}
+            totalPoints={questions.length * pointsPerQuestion}
+            dispatch={dispatch}
+          />
+        )}
       </main>
       <Footer />
     </>
