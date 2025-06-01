@@ -131,7 +131,7 @@ header h1 {
 
 .btn:disabled:hover {
   /* background: initial; */
-  cursor: progress;
+  cursor: default;
 }
 
 .progress-bar {

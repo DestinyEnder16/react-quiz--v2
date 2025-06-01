@@ -2,7 +2,7 @@ function Loader() {
   return (
     <div className="loader">
       <div className="shapes-5"></div>
-      <p>
+      <p style={{ fontSize: '1.4rem' }}>
         <b>Loading...</b>
       </p>
     </div>
