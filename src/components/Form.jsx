@@ -11,7 +11,7 @@ function Form({ dispatch }) {
   return (
     <form>
       <div className="field">
-        <label>Number of Questions</label>
+        <label>Number of Questions:</label>
         <input
           type="number"
           min={1}
@@ -23,13 +23,13 @@ function Form({ dispatch }) {
       </div>
 
       <div className="field">
-        <label>Categories</label>
+        <label>Categories:</label>
         <select value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value={'science'}>Science</option>
           <option value={'history'}>History</option>
           <option value={'music'}>Music</option>
           <option value={'geography'}>Geography</option>
-          <option value={'sport_and_leisure'}>Sport and leisure</option>
+          <option value={'sport_and_leisure'}>Sports and leisure</option>
           <option value={'general_knowledge'}>General Knowledge</option>
         </select>
       </div>
@@ -41,8 +41,8 @@ function Form({ dispatch }) {
           id="difficulty"
         >
           <option value="easy">Easy</option>
-          <option value="medium">medium</option>
-          <option value="hard">hard</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
         </select>
       </div>
 
